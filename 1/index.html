@@ -1,3 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快猫短视频</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background: url('./img/bg.png') no-repeat;
+            background-size: 100% 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .settimeout {
+            width: 70%;
+            height: 50%;
+            background: rgba(255, 255, 255, .5);
+            border-radius: 10px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .outside,
+        .round {
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .outside {
+            top: 0;
+            left: 50%;
+            background: #FF5C9E;
+            width: 150px;
+            height: 150px;
+        }
+
+        .round {
+            left: 50%;
+            top: 50%;
+            background: white;
+            width: 135px;
+            height: 135px;
+            display: flex;
+            align-items: center;
+        }
+
+        .txt {
+            text-align: center;
+            width: 100%;
+        }
+
+        .num {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .second {
+            font-size: 26px;
+            font-weight: 700;
+            color: #b7b5b5;
+        }
+
+        .wait {
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .btn {
+            background: #FF5C9E;
+            color: white;
+            position: absolute;
+            bottom: 20px;
+            height: 30px;
+            width: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            border-radius: 8px;
+            line-height: 30px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        @media screen and (min-width: 1000px) {
+            .settimeout {
+                width: 40%;
+            }
+
+            .btn {
+                height: 45px;
+                line-height: 45px;
+            }
+        }
+    </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6622ab7f1d3c123713831ebb37a2cc42";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+     <script>
+        (function () {
+            //编码
+            var appId = 'okm_h5';
+            var baseUrl = 'https://maskanalyse.com/data-statistics-node/';
+            var jsUrl = 'https://img.maskanalyse.com/data-statistics-server/js/http.data.js';
+
+            function init() {
+                var session = window.createAnalyseSession(appId, baseUrl);
+                session.listener();
+            }
+            if (window.createAnalyseSession) {
+                init();
+            } else {
+                var script = window.document.createElement('script');
+                script.src = jsUrl;
+                script.onload = init;
+                window.document.head.appendChild(script);
+            }
+
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="settimeout">
+        <div class="outside">
+            <div class="round">
+                <div class="txt">
+                    <p class="num">3</p>
+                    <p class="second">秒</p>
+                </div>
+            </div>
+        </div>
+        <div class="wait">页面跳转中，请稍候...</div>
+        <div class="btn" onclick="device()">立即前往</div>
+    </div>
+    <script>
+        let num = 3;
+        let time = document.querySelector('.num');
+
+        function showtime() {
+            num -= 1;
+            time.innerHTML = num;
+            if (num <= 0) {
+                clearInterval(timer);
+                device()
+            }
+        }
+
+        function device() {
+            clearInterval(timer);
+            if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                window.location.href = "./km/index.html";
+                // console.log('mobile')
+            } else {
+                window.location.href = "https://www.qq.com";
+                // console.log('pc')
+            }
+        }
+
+        let timer = setInterval("showtime()", 1000);
+    </script>
+</body>
 
 </html>
-<meta http-equiv="refresh" content="0; url=https://www.qq.com">
